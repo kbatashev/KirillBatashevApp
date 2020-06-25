@@ -35,7 +35,8 @@ namespace KirillBatashevApp
             tboxSurname.Text = eresultRow["Surname"].ToString();
             tboxAge.Text = eresultRow["Age"].ToString();
             tboxSalary.Text = eresultRow["Salary"].ToString();
-            cboxDepartment.Text = eresultRow["DepartmentID"].ToString();
+            cboxDepartment.Items.Add(eresultRow["DepartmentID"].ToString());
+
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)

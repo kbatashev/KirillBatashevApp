@@ -215,6 +215,7 @@ namespace KirillBatashevApp
                 EmpEditWindow empEditWindow = new EmpEditWindow(editEmpRow.Row);
                 empEditWindow.ShowDialog();
 
+
                 if (empEditWindow.DialogResult.HasValue && empEditWindow.DialogResult.Value)
                 {
                     editEmpRow.EndEdit();

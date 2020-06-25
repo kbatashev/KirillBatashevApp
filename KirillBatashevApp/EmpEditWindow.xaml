@@ -26,7 +26,8 @@
             Margin="117,179,0,0" 
             VerticalAlignment="Top" 
             Width="175"
-            ItemsSource="{Binding Path = DepartmentID}"
+            ItemsSource="{Binding Employees}"
+            SelectedItem="{Binding DepartmentID}"
             SelectionChanged="cboxDepartment_SelectionChanged"
             >
             <ComboBox.ItemTemplate>
