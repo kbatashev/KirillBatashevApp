@@ -39,7 +39,7 @@ namespace KirillBatashevApp
             tboxAge.Text = eresultRow["Age"].ToString();
             tboxSalary.Text = eresultRow["Salary"].ToString();
             cboxDepartment.ItemsSource = department.DefaultView;
-            
+            cboxDepartment.SelectedItem = eresultRow["DepartmentID"];
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -48,7 +48,7 @@ namespace KirillBatashevApp
             eresultRow["Surname"] = tboxSurname.Text;
             eresultRow["Age"] = tboxAge.Text;
             eresultRow["Salary"] = tboxSalary.Text;
-            
+            eresultRow["DepartmentID"] = cboxDepartment.SelectedIndex+1;
 
             this.DialogResult = true;
 

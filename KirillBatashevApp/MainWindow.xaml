@@ -56,7 +56,7 @@
                    Width="auto"
                    Height="auto"
                    Margin="10"/>
-
+                    
         <Button x:Name="btnEditEmp" 
                 Content="Редактировать сотрудника" 
                 Grid.Column="0" 

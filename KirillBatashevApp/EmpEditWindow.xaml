@@ -27,7 +27,7 @@
             VerticalAlignment="Top" 
             Width="175"
             ItemsSource="{Binding}"
-           SelectedItem="{Binding dName}"
+           
             SelectionChanged="cboxDepartment_SelectionChanged"
             >
         <ComboBox.ItemTemplate>

@@ -79,7 +79,7 @@ namespace KirillBatashevApp
             adDep.SelectCommand = command;
             adDep.Fill(dtDep);
             cbDepList.ItemsSource = dtDep.DefaultView;
-            
+
 
             //insert into empolyees
             command = new SqlCommand(@"INSERT INTO Employees (eName, Surname, Age, Salary, DepartmentID) 
@@ -197,6 +197,7 @@ namespace KirillBatashevApp
                 {
                     editDepRow.CancelEdit();
                 }
+
             }
             else
                 MessageBox.Show("Выберете отдел для редактирования!");
@@ -207,13 +208,14 @@ namespace KirillBatashevApp
         /// <param name="args">Параметры</param>
         private void BtnEditEmp_Click(object sender, RoutedEventArgs e)
         {
+            string result = String.Empty;
             if (empList.SelectedItem != null)
             {
                 DataRowView editEmpRow = (DataRowView)empList.SelectedItem;
                 editEmpRow.BeginEdit();
 
                 EmpEditWindow empEditWindow = new EmpEditWindow(editEmpRow.Row, dtDep);
-                
+
                 empEditWindow.ShowDialog();
 
 
@@ -229,6 +231,17 @@ namespace KirillBatashevApp
                 {
                     editEmpRow.CancelEdit();
                 }
+                var request = dtGeneral
+                    .AsEnumerable()
+                    .Where(empID => empID.Field<int>("ID") == (int)editEmpRow["ID"]);
+
+                foreach (var item in request)
+                {
+                    result += $"{item[1]} {item[2]}, возраст: {item[3]}, " +
+                        $"зарплата: {item[4]:##}, отдел: {item[5]}\n";
+                }
+
+                tbInfo.Text = result;
             }
             else
                 MessageBox.Show("Выберете сотрудника для редактирования!");
