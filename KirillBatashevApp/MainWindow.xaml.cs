@@ -79,7 +79,7 @@ namespace KirillBatashevApp
             adDep.SelectCommand = command;
             adDep.Fill(dtDep);
             cbDepList.ItemsSource = dtDep.DefaultView;
-
+            
 
             //insert into empolyees
             command = new SqlCommand(@"INSERT INTO Employees (eName, Surname, Age, Salary, DepartmentID) 
@@ -212,7 +212,8 @@ namespace KirillBatashevApp
                 DataRowView editEmpRow = (DataRowView)empList.SelectedItem;
                 editEmpRow.BeginEdit();
 
-                EmpEditWindow empEditWindow = new EmpEditWindow(editEmpRow.Row);
+                EmpEditWindow empEditWindow = new EmpEditWindow(editEmpRow.Row, dtDep);
+                
                 empEditWindow.ShowDialog();
 
 

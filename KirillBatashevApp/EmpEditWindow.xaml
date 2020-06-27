@@ -26,13 +26,13 @@
             Margin="117,179,0,0" 
             VerticalAlignment="Top" 
             Width="175"
-            ItemsSource="{Binding Employees}"
-            SelectedItem="{Binding DepartmentID}"
+            ItemsSource="{Binding}"
+           SelectedItem="{Binding dName}"
             SelectionChanged="cboxDepartment_SelectionChanged"
             >
-            <ComboBox.ItemTemplate>
+        <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding DepartmentID}"/>
+                    <TextBlock Text="{Binding dName}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>

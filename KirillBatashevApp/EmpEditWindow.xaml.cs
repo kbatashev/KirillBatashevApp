@@ -22,10 +22,13 @@ namespace KirillBatashevApp
     public partial class EmpEditWindow : Window
     {
         public DataRow eresultRow { get; set; }
-        public EmpEditWindow(DataRow edataRow)
+        public DataTable department { get; set; }
+        public EmpEditWindow(DataRow edataRow, DataTable department)
         {
             InitializeComponent();
             eresultRow = edataRow;
+            this.department = department;
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -35,8 +38,8 @@ namespace KirillBatashevApp
             tboxSurname.Text = eresultRow["Surname"].ToString();
             tboxAge.Text = eresultRow["Age"].ToString();
             tboxSalary.Text = eresultRow["Salary"].ToString();
-            cboxDepartment.Items.Add(eresultRow["DepartmentID"].ToString());
-
+            cboxDepartment.ItemsSource = department.DefaultView;
+            
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -45,6 +48,7 @@ namespace KirillBatashevApp
             eresultRow["Surname"] = tboxSurname.Text;
             eresultRow["Age"] = tboxAge.Text;
             eresultRow["Salary"] = tboxSalary.Text;
+            
 
             this.DialogResult = true;
 
@@ -52,7 +56,7 @@ namespace KirillBatashevApp
 
         private void cboxDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+           
         }
     }
 }
