@@ -97,15 +97,15 @@ namespace KirillBatashevApp
 
 
             //insert into departmens
-            command = new SqlCommand(@"INSERT INTO Department (dName) 
+            command = new SqlCommand(@"INSERT INTO Departments (dName) 
                           VALUES (@dName); SET @ID = @@IDENTITY;",
                           connection);
 
             command.Parameters.Add("@dName", SqlDbType.NVarChar, -1, "dName");
-            //SqlParameter param = command.Parameters.Add("@ID", SqlDbType.Int, 0, "ID");
+            command.Parameters.Add("@ID", SqlDbType.Int, -1, "ID");
             param.Direction = ParameterDirection.Output;
             adDep.InsertCommand = command;
-
+            
 
             //update employees
             command = new SqlCommand(@"UPDATE Employees SET eName = @eName,
@@ -252,11 +252,17 @@ namespace KirillBatashevApp
         /// <param name="args">Параметры</param>
         private void BtnCreateEmp_Click(object sender, RoutedEventArgs e)
         {
-            //AddEmpWindow addEmpWindow = new AddEmpWindow();
-            //addEmpWindow.Owner = this;
-            //addEmpWindow.DataContext = dbd;
-            //addEmpWindow.cboxDepartment.ItemsSource = dbd.GetDeptaments();
-            //addEmpWindow.Show();
+            AddEmpWindow addEmpWindow = new AddEmpWindow(dtEmpl, dtDep);
+
+            addEmpWindow.ShowDialog();
+            if (addEmpWindow.DialogResult.HasValue && addEmpWindow.DialogResult.Value)
+            {
+
+                adEmpl.Update(dtEmpl);
+                dtGeneral.Clear();
+                adGeneral.Fill(dtGeneral);
+
+            }
         }
 
         /// <summary>Обработка нажатия кнопки "добавить департамент"</summary>
@@ -265,20 +271,17 @@ namespace KirillBatashevApp
         private void BtnCreateDep_Click(object sender, RoutedEventArgs e)
         {
 
-            //DataRowView createDepRow = (DataRowView)cbDepList.SelectedItem;
-            //createDepRow.BeginEdit();
+            AddDepWindow addDepWindow = new AddDepWindow(dtDep);
+            addDepWindow.ShowDialog();
 
-            //AddDepWindow addDepWindow = new AddDepWindow(createDepRow.Row);
-            //addDepWindow.ShowDialog();
+            if (addDepWindow.DialogResult.HasValue && addDepWindow.DialogResult.Value)
+            {
+                
+                adDep.Update(dtDep);
+                dtGeneral.Clear();
+                adGeneral.Fill(dtGeneral);
 
-            //if (addDepWindow.DialogResult.HasValue && addDepWindow.DialogResult.Value)
-            //{
-            //    createDepRow.EndEdit();
-            //    adDep.Update(dtDep);
-            //    dtGeneral.Clear();
-            //    adGeneral.Fill(dtGeneral);
-
-            //}
+            }
             //else
             //{
             //    createDepRow.CancelEdit();

@@ -21,16 +21,18 @@ namespace KirillBatashevApp
     /// </summary>
     public partial class AddDepWindow : Window
     {
-        public DataRow adResultRow { get; set; }
-        public AddDepWindow(DataRow adDataRow)
+        //public DataRow adResultRow { get; set; }
+        public DataTable departmentAdd { get; set; }
+        public AddDepWindow(DataTable departmentAdd)
         {
             InitializeComponent();
-            adResultRow = adDataRow;
+            //adResultRow = adDataRow;
+            this.departmentAdd = departmentAdd;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            tboxNewDep.Text = adResultRow["dName"].ToString();
+            tboxNewDep.Text = departmentAdd.Columns["dName"].ToString();
         }
 
         /// <summary>Обработчик нажатия кнопки "сохранить"</summary>
@@ -38,7 +40,11 @@ namespace KirillBatashevApp
         /// <param name="e"></param>
         private void BtnSaveDep_Click(object sender, RoutedEventArgs e)
         {
-            adResultRow["dName"] = tboxNewDep.Text;
+            DataRow departmentRow = departmentAdd.NewRow();
+            departmentRow["ID"] = (int)departmentAdd.Rows.Count + 1;
+            departmentRow["dName"] = tboxNewDep.Text;
+            departmentAdd.Rows.Add(departmentRow);
+
             this.DialogResult = true;
         }
     }
