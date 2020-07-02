@@ -1,0 +1,36 @@
+﻿<Window x:Class="KirillBatashevApp.SendDepartmentsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KirillBatashevApp"
+        mc:Ignorable="d"
+        Title="SendDepartmentsWindow" Height="300" Width="337" Loaded="Window_Loaded">
+    <Grid Margin="0,0,80.333,124.667">
+        <DataGrid x:Name="datagridDepartments"
+                  Margin="10,10,75.334,-100"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding}"
+                  IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding ID}" 
+                                    Header="ID" IsReadOnly="True" Width="Auto"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding dName}" 
+                                    Header="Department" IsReadOnly="True" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="departmentSend"
+                Content="Send to Web"
+                HorizontalAlignment="Left"
+                Margin="202,25,-49.666,0"
+                VerticalAlignment="Top"
+                Width="98"/>
+        <Button x:Name="cancelDepartmens"
+                Content="Cancel"
+                HorizontalAlignment="Left"
+                Margin="202,79,-49.666,0"
+                VerticalAlignment="Top"
+                Width="98"/>
+    </Grid>
+</Window>

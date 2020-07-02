@@ -43,7 +43,7 @@
                Content="Информация" 
                Grid.Column="1" 
                HorizontalAlignment="Center" 
-               Margin="204.667,8,227.333,8" 
+               Margin="23.667,6,408.333,10" 
                VerticalAlignment="Center" Height="26" Width="104"/>
 
         <TextBlock x:Name="tbInfo"
@@ -56,7 +56,7 @@
                    Width="auto"
                    Height="auto"
                    Margin="10"/>
-                    
+
         <Button x:Name="btnEditEmp" 
                 Content="Редактировать сотрудника" 
                 Grid.Column="0" 
@@ -143,6 +143,23 @@
                                     Header="Department" IsReadOnly="True" Width="Auto"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="employeesSend" 
+                Content="Send Employyes"
+                Grid.Column="1"
+                HorizontalAlignment="Left" 
+                Margin="413.667,13,0,0" 
+                VerticalAlignment="Top" 
+                Width="112" 
+                Click="SendEmployees_Click"/>
+        
+        <Button x:Name="departmentsSend"
+                Content="Send Departments"
+                Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                Margin="267.667,13,0,0" 
+                VerticalAlignment="Top" 
+                Width="123" 
+                Click="SendDepartments_Click"/>
 
     </Grid>
 </Window>

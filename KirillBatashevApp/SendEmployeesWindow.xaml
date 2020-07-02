@@ -1,0 +1,48 @@
+﻿<Window x:Class="KirillBatashevApp.SendEmployeesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KirillBatashevApp"
+        mc:Ignorable="d"
+        Title="SendEmployeesWindow" Height="412.916" Width="473.375" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="datagridEmployees"
+                  HorizontalAlignment="Left"
+                  Height="270"
+                  Margin="10,10,0,0"
+                  VerticalAlignment="Top"
+                  Width="448"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding}"
+                  IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding ID}" 
+                                    Header="ID" IsReadOnly="True" Width="Auto"/>
+                <DataGridTextColumn x:Name="nameColumn" Binding="{Binding eName}" 
+                                    Header="Name" IsReadOnly="True" Width="Auto"/>
+                <DataGridTextColumn x:Name="surnameColumn" Binding="{Binding Surname}" 
+                                    Header="Surname" IsReadOnly="True" Width="Auto"/>
+                <DataGridTextColumn x:Name="ageColumn" Binding="{Binding Age}" 
+                                    Header="Age" IsReadOnly="True" Width="Auto"/>
+                <DataGridTextColumn x:Name="salaryColumn" Binding="{Binding Salary}" 
+                                    Header="Salary" IsReadOnly="True" Width="Auto"/>
+                <DataGridTextColumn x:Name="departmentColumn" Binding="{Binding dName}" 
+                                    Header="Department" IsReadOnly="True" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="employeesSend"
+                Content="Send to Web"
+                HorizontalAlignment="Left"
+                Margin="78,327,0,0"
+                VerticalAlignment="Top"
+                Width="93"/>
+        <Button x:Name="employeesCancel"
+                Content="Cancel"
+                HorizontalAlignment="Left"
+                Margin="298,327,0,0"
+                VerticalAlignment="Top"
+                Width="75"/>
+
+    </Grid>
+</Window>

@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI;
+
 
 namespace KirillBatashevApp
 {
@@ -290,12 +292,25 @@ namespace KirillBatashevApp
 
         private void dgWorkers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void dgWorkers_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+      
+        private void SendDepartments_Click(object sender, RoutedEventArgs e)
+        {
+            SendDepartmentsWindow sendDepartments = new SendDepartmentsWindow(dtDep);
+            sendDepartments.ShowDialog();
+        }
+
+        private void SendEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            SendEmployeesWindow sendEmployees = new SendEmployeesWindow(dtGeneral);
+            sendEmployees.ShowDialog();
         }
     }
 }
